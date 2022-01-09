@@ -1,6 +1,7 @@
 #include "vm.hpp"
 
 void Object::mark() {
+    // Checking if object was marked before to prevent recursive marking.
     if (marked) return;
 
     marked = true;
@@ -38,4 +39,3 @@ Object* VM::pushPair() {
     push(object);
     return object;
 }
-

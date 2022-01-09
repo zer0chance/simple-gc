@@ -1,8 +1,9 @@
 #include "vm.hpp"
 
 int main() {
+    // Demo
     VM vm;
-    
+
     vm.pushInt(1);
     vm.pushInt(2);
     vm.pushPair();
@@ -10,6 +11,6 @@ int main() {
     vm.pop();
     vm.pop();
     vm.pushInt(5);
-    
+
     vm.gc();
 }

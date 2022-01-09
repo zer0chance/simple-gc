@@ -11,10 +11,16 @@ struct Object {
         T_PAIR
     };
 
+    // Setted to true if object is reachable.
     bool marked;
+
+    // Objects are stored as linked list. See comments in VM class.
     Object* next;
+
+    // Object's type.
     ObjType type;
 
+    // Object in VM can be an integer or a pair.
     union {
         // INT
         int value;
@@ -37,8 +43,12 @@ private:
 #define MAX_STACK 256
 
 class VM {
+    // VM operates on stack as many of real VM's does.
     Object* stack[MAX_STACK];
     int tos; // top of stack
+
+    // VM tracks all created object t collect garbage objects when they
+    // becomes unreachable. All created objects stored in linked list.
     Object* head;
 
     void push(Object* value) {
